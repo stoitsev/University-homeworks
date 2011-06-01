@@ -111,7 +111,9 @@ void deleteAt(List *l, int pos)
         return;
     }
     if (pos == 0) {
+        struct Node *deleter = l->first;
         l->first = l->first->next;
+        free(deleter);
         return;
     }
     pos--;
@@ -121,8 +123,10 @@ void deleteAt(List *l, int pos)
         element = element->next;
         i++;
     }
+    struct Node *deleter = element->next;
     element->next = element->next->next;
     l->count = l->count - 1;
+    free(deleter);
 }
 
 void setAt(List *l, int pos, int x)
