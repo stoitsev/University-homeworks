@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #define SIZE_OF_QUEUE 1000
+#define MAX_QUERIES 1000
 
 typedef struct {
     int front;
@@ -19,10 +20,7 @@ typedef struct {
 } List;
 
 void insertFront(List *l, int x); 
-void insertAt(List *l, int pos, int x);
 void deleteAt(List *l, int pos); 
-int getAt(List *l, int pos); 
-void setAt(List *l, int pos, int x);
 int getSize(List *l);
 void print(List *l, FILE *fout); 
 void offer(Queue *q, int x);
@@ -30,22 +28,22 @@ int peak(Queue *q);
 int poll(Queue *q);
 int isEmpty(Queue *q);
 
+List *nodesPtr;
+
 int main()
 {
-    Queue queue;
-    queue.front = 0;
-    queue.rear = 0;
-    
     int numberOfNodes = 0;
     scanf("%d", &numberOfNodes);
 
     int numberOfEdges = 0;
     scanf("%d", &numberOfEdges);
 
-    List nodes[numberOfNodes];
+    List nodes[numberOfNodes + 1];
+
+    nodesPtr = nodes;
 
     int i = 0;
-    for (i = 0; i < 9; i++) {
+    for (i = 0; i <= numberOfNodes; i++) {
         nodes[i].first = NULL;
         nodes[i].count = 0;
     }
@@ -54,33 +52,63 @@ int main()
     for (i = 0; i < numberOfEdges; i++) {
         scanf("%d", &tempParent);
         scanf("%d", &tempChild);
-        insertFront(&nodes[tempParent - 1], tempChild - 1);
+        insertFront(&nodes[tempParent], tempChild);
+        insertFront(&nodes[tempChild], tempParent);
     }
 
-    for (i = 0; i < 9; i++) {
-        printf("Childs of edge %d:\n", i + 1);
-        print(&nodes[i], stdout);
-        printf("\n");
+    int queries;
+    scanf("%d", &queries);
+    int query[MAX_QUERIES][2];
+    int startNode, endNode;
+    for (i = 0; i < queries; i++) {
+        scanf("%d", &query[i][0]);
+        scanf("%d", &query[i][1]);
+    }
+
+    for (i = 0; i < queries; i++) {
+        printf("%d\n", bfs(nodes, query[i][0], query[i][1], numberOfNodes));
+    }
+
+    for (i = 0; i < numberOfNodes; i++) {
+        while (getSize(&nodes[i])) {
+            deleteAt(&nodes[i], 0);
+        }
     }
 
     return 0;
 }
 
-int bfs(List nodes[], int startNode, int endNode)
+int bfs(List nodes[], int startNode, int endNode, int numberOfNodes)
 {
     Queue queue;
     queue.front = 0;
     queue.rear = 0;
 
+    int dist[numberOfNodes + 1];
+    int i = 0;
+    for (i = 0; i <= numberOfNodes; i++) {
+        dist[i] = -1;
+    }
+
+    dist[startNode] = 0;
+
     offer(&queue, startNode);
-    
-    int currentNode;
+    int currentNode, childNode;
+    int numOfChildNodes;
     while (!isEmpty(&queue)) {
         currentNode = poll(&queue);
-
-
+        if (currentNode == endNode)
+                return dist[currentNode];
+        numOfChildNodes = getSize(&nodes[currentNode]);
+        struct Node *temp = nodes[currentNode].first;
+        for(i = 1; i <= getSize(&nodes[currentNode]); i++) {
+            if (dist[temp->value] >= 0)
+                continue;
+            offer(&queue, temp->value);
+            dist[temp->value] = dist[currentNode] + 1;
+            temp = temp->next;
+        }
     }   
-    
 
     return -1;
 }
@@ -126,40 +154,16 @@ int isEmpty(Queue *q)
 }
 
 /*
- * Beggining of dynamic list
+ * Beggining of linked list
  */
 
 void insertFront(List *l, int x)
 {
     struct Node *temp = malloc(sizeof(struct Node));
     temp->value = x;
-    l->count = l->count + 1;
+    l->count += 1;
     temp->next = l->first;
     l->first = temp;
-}
-
-void insertAt(List *l, int pos, int x)
-{
-    if (pos > l->count) {
-        printf("Error: No such element to add\n");
-        return;
-    }
-    if (pos == 0) {
-        insertFront(l, x);
-        return;
-    }
-    pos--;
-    struct Node *previous = l->first;
-    int i = 0;
-    while (i != pos) {
-        previous = previous->next;
-        i++;
-    }
-    struct Node *temp = malloc(sizeof(struct Node));
-    temp->value = x;
-    l->count = l->count + 1;
-    temp->next = previous->next;
-    previous->next = temp;
 }
 
 void deleteAt(List *l, int pos)
@@ -169,7 +173,10 @@ void deleteAt(List *l, int pos)
         return;
     }
     if (pos == 0) {
+        struct Node *deleter = l->first;
         l->first = l->first->next;
+        l->count -= 1;
+        free(l->first);
         return;
     }
     pos--;
@@ -179,31 +186,11 @@ void deleteAt(List *l, int pos)
         element = element->next;
         i++;
     }
+    struct Node *deleter = element->next;
     element->next = element->next->next;
     l->count = l->count - 1;
+    free(deleter);
 }
-
-void setAt(List *l, int pos, int x)
-{
-    struct Node *temp = l->first;
-    int i = 0;
-    while (i != pos) {
-        temp = temp->next;
-        i++;
-    }
-    temp->value = x;
-}
-
-int getAt(List *l, int pos)
-{
-    struct Node *temp = l->first;
-    int i = 0;
-    while(i != pos) {
-        temp = temp->next;
-        i++;
-    }
-    return temp->value;
-}  
 
 void print(List *l, FILE *fout)
 {
