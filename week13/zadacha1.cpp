@@ -128,8 +128,7 @@ void lower(char *name) {
         name[i] = tolower(name[i]);
 }
 
-int main()
-{
+int main() {
     Map map;
     int n;
     scanf("%d", &n);
