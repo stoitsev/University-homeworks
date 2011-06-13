@@ -1,100 +1,52 @@
 #include <iostream>
-
+#include "eventmanager.h"
 using namespace std;
 
-class Date {
-    public:
-        Date(int, int, int);
-        Date(const Date &);
-        Date *operator= (const Date &) const;
-        bool operator< (const Date &) const;
-        bool operator> (const Date &) const;
-        bool operator<= (const Date &) const;
-        bool operator>= (const Date &) const;
-        bool operator== (const Date &) const;
-        bool operator!= (const Date &) const;
-        friend ostream& operator <<(ostream &, Date);
-        int getDay() const;
-        void setDay(int);
-        int getMonth() const;
-        void setMonth(int);
-        int getYear() const;
-        void setYear(int);
-        ~Date();
-    private:
-        int day;
-        int month;
-        int year;
-};
-
-Date::Date(int d, int m, int y) {
-    bool error = false;
-    day = ((d <= 1 || d >=31) && (error = true)) ? 1 : d;
-    month = ((m <= 1 || m >=12) && (error = true)) ? 1 : m;
-    year = ((y <= 1 || y >=2012) && (error = true)) ? 2011 : y;
-    if (error)
-        cout << "error in date input" << endl;
-}
-
-Date::Date(const Date &date) {
-    day = date.day;
-    month = date.month;
-    year = date.year;
-}
-
-int Date::getDay() const{
-    return day;
-}
-
-void Date::setDay(int d) {
-    if (d <= 1 || d >= 31) {
-        cout << "error in day input" << endl;
-        return;
-    }
-    day = d;
-}
-
-int Date::getMonth() const{
-    return month;
-}
-
-void Date::setMonth(int m) {
-    if (m <= 1 || m >= 12) {
-        cout << "error in month input" << endl;
-        return;
-    }
-    month = m;
-}
-
-int Date::getYear() const{
-    return year;
-}
-
-void Date::setYear(int y) {
-    if (y <= 1 || y >= 2012) {
-        cout << "error in year input" << endl;
-        return;
-    }
-    year = y;
-}
-
-Date::~Date() {
-    
-}
-
-ostream &operator <<(ostream &os, Date date) {
-    os << date.getDay() << " " << date.getMonth() << " " << date.getYear();
-    return os;
-}
+#define LOW 1
+#define HIGH 3
+#define MEDIUM 2
 
 int main() {
-    Date date(12, 6, 2007);
-    cout << date << endl;
-    date.setDay(13);
-    cout << date << endl;
-    date.setMonth(10);
-    cout << date << endl;
-    date.setYear(1991);
-    cout << date << endl;
+    cout << "Creation of three events: " << endl;
+    Date dt1(1, 1, 2011);
+    Date dt2(1, 2, 2011);
+    Date dt3(1, 3, 2011);
+    char desc1[] = "Event 1";
+    char desc2[] = "Event 2";
+    char desc3[] = "Event 3";
+    EventManager evmngr;
+    Event event1(1, desc1, dt1, LOW);
+    Event event2(2, desc2, dt2, HIGH);
+    Event event3(3, desc3, dt3, MEDIUM);
+    evmngr.addEvent(event1);
+    evmngr.addEvent(event2);
+    evmngr.addEvent(event3);
+    evmngr.print();
+    cout << endl;
+    cout << "Delete events with id = 2, id = 1 and id = 4:" << endl;
+    evmngr.removeEvent(2);
+    evmngr.removeEvent(4);
+    evmngr.removeEvent(1);
+    evmngr.print();
+    cout << endl;
+    cout << "Add events with id 4 and 5:" << endl;
+    char desc4[] = "Event 4";
+    char desc5[] = "Event 5";
+    Date date4(1, 4, 2011);
+    Date date5(1, 5, 2011);
+    Event event4(4, desc4, date4, LOW);
+    Event event5(5, desc5, date5, LOW);
+    evmngr.addEvent(event4);
+    evmngr.addEvent(event5);
+    evmngr.print();
+    cout << endl;
+    cout << "Change information in event with id 4:" << endl;
+    Event *fourthEvent = evmngr.getEvent(4);
+    char newdesc[] = "YES!";
+    Date newdate(16, 5, 2011);
+    fourthEvent->setDescription(newdesc);
+    fourthEvent->setDate(newdate);
+    fourthEvent->setPriority(HIGH);
+    evmngr.print();
     return 0;
 }
