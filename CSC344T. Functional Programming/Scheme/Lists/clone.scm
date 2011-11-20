@@ -1,0 +1,5 @@
+(define (clone L)
+	(if (null? L) '()
+		(cons (car L) (clone (cdr L)))
+	)
+)
