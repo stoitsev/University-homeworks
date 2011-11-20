@@ -1,0 +1,12 @@
+(define (occurrences l element)
+  (define (count l num)
+    (if (null? l)
+        num
+        (if (= element (car l))
+            (count (cdr l) (+ num 1))
+            (count (cdr l) num)
+        )
+    )
+  )
+  (count l 0)
+)
