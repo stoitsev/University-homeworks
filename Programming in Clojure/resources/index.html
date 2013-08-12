@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Natural language processing</title>
+  <style type="text/css">
+	body {
+      font-family: "Ubuntu Light", helvetica, sans-serif;
+      width: 960px;
+      margin: 3em auto;
+	}
+  </style>
+</head>
+<body>
+  <h1>Clojure NLP web service</h1>
+  <p>This is web service for natural language processing written in Clojure.</p>
+  <h2>Supported operations</h2>
+  <ul>
+  	<li><strong>Echo (GET http://cljnlp.herokuapp.com/echo/:request)</strong> - Outputs the :request string. Ideal for connectivity testing.</li>
+    <li><strong>Tokenize (GET http://cljnlp.herokuapp.com/tokenize/:request)</strong> - Contert the the string inside :request into a sequence of tokens.</li>
+    <li><strong>Frequency (GET http://cljnlp.herokuapp.com/frequency/:request)</strong> - Return the frequency of each char in the string inside :request.</li>
+    <li><strong>Keywords (GET http://cljnlp.herokuapp.com/keywords/:request)</strong> - Return the keywords for the text inside :request.</li>
+  </ul>
+</body>
+</html>
