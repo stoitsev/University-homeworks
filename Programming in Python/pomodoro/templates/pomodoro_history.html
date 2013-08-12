@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Pomodoro - Code a Skill
+{% endblock %}
+
+
+{% block content %}
+    <div class="row-fluid">
+        <div class="span3">
+          <div class="well sidebar-nav">
+            <ul class="nav nav-list">
+              <li class="nav-header">Pomodoro</li>
+              <li><a href="{% url pomodoro_new %}">New pomodoro</a></li>
+              <li><a href="{% url pomodoro_home %}">Home</a></li>
+              <li class="active"><a href="{% url pomodoro_history %}">History</a></li>
+            </ul>
+          </div><!--/.well -->
+        </div><!--/span-->
+        <div class="span9">
+          
+          <h1 style="margin-bottom: 20px"><a href="{% url pomodoro_home %}">Pomodoro history</a></h1>
+
+          <table class="table table-condensed">
+        <thead>
+          <tr>
+            <th>Pomodoro</th>
+            <th style="text-align: right">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for object in object_list %}
+          <tr>
+            <td>{{ object.text }}</td>
+            <td style="text-align: right"><a href="{% url pomodoro_delete object.id %}" class="btn btn-inverse btn-mini">Remove</a></td>
+          </tr>
+              {% endfor %}
+        </tbody>
+            </table>
+          
+        </div><!--/span-->
+      </div>
+{% endblock %}

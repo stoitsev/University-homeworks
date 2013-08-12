@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Wiki - Code a Skill
+{% endblock %}
+
+
+{% block content %}
+    <div class="row-fluid">
+        <div class="span3">
+          <div class="well sidebar-nav">
+            <ul class="nav nav-list">
+              <li class="nav-header">Wiki</li>
+              <li><a href="{% url wiki_new %}">New page</a></li>
+              <li><a href="{% url wiki_home %}">Home</a></li>
+              <li class="active"><a href="{% url wiki_list %}">All pages</a></li>
+              <li><a href="#">History</a></li>
+            </ul>
+          </div><!--/.well -->
+        </div><!--/span-->
+        <div class="span9">
+          
+            <h1 style="margin-bottom: 20px"><a href="{% url wiki_list%}">Wiki pages</a></h1>
+
+          	<table class="table table-condensed">
+			  <thead>
+			    <tr>
+			      <th>Page</th>
+			      <th style="text-align: right">Action</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			  	{% for object in object_list %}
+			    <tr>
+			      <td><a href="{% url wiki_view object.id %}">{{ object.title }}</a></td>
+			      <td style="text-align: right">
+			      	<a href="{% url wiki_update object.id %}" class="btn btn-info btn-mini">Edit</a> 
+			      	<a href="{% url wiki_delete object.id %}" class="btn btn-danger btn-mini">Delete</a>
+			      </td>
+			    </tr>
+          		{% endfor %}
+			  </tbody>
+          	</table>
+          
+          
+        </div><!--/span-->
+      </div>
+{% endblock %}

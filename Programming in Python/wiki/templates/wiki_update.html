@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {{ page.title }} - Code a Skill
+{% endblock %}
+
+
+{% block content %}
+    <div class="row-fluid">
+        <div class="span3">
+          <div class="well sidebar-nav">
+            <ul class="nav nav-list">
+              <li class="nav-header">Wiki</li>
+              <li><a href="{% url wiki_new %}">New page</a></li>
+              <li><a href="{% url wiki_home %}">Home</a></li>
+              <li><a href="{% url wiki_list %}">All pages</a></li>
+              <li><a href="#">History</a></li>
+            </ul>
+          </div><!--/.well -->
+        </div><!--/span-->
+        <div class="span9">
+          
+        <h1>Update Wiki Page</h1>
+            
+        	{% include "wiki_form.html" with action="/wiki/update/" %}
+
+        </div><!--/span-->
+      </div>
+{% endblock %}

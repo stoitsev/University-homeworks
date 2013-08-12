@@ -1,0 +1,22 @@
+<section class="post" style="margin-top:20px;">
+    {% if form.errors %}
+    <div class="alert alert-error">
+        <p>{{ form.title.errors|striptags }}</p>
+        <p>{{ form.content.errors|striptags }}</p>
+    </div>
+    {% endif %}
+    <form method="POST" action="{{ action }}{{ page.id }}" class="form-horizontal">
+        {% csrf_token %}
+        <fieldset>
+            <div class="control-group">
+                <input value="{{ page.title }}" name="title" class="input-xlarge" type="text" placeholder="Title of the page" />
+            </div>
+            <div class="control-group">
+                <textarea id="wiki-page-content" name="content" rows="3" class="input-xlarge" placeholder="Content">{{ page.content }}</textarea>
+            </div>
+            <div class="control-group">
+                <input type="submit" class="btn btn-primary" value="Submit" />
+            </div>
+        </fieldset>
+    </form>
+</section>

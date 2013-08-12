@@ -1,0 +1,18 @@
+<section class="post" style="margin-top:20px;">
+    {% if form.errors %}
+    <div class="alert alert-error">
+        {{ form.errors.text|striptags }}
+    </div>
+    {% endif %}
+    <form method="POST" action="{{ action }}{{ pomodoro.id }}" class="form-horizontal">
+        {% csrf_token %}
+        <fieldset>
+            <div class="control-group">
+                <textarea name="text" rows="4" class="input-xlarge" placeholder="Pomodoro" style="width: 100%">{{ pomodoro.text }}</textarea>
+            </div>
+            <div class="control-group">
+                <input type="submit" class="btn btn-primary" value="Submit" />
+            </div>
+        </fieldset>
+    </form>
+</section>

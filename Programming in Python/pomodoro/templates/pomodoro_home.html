@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Pomodoro - Code a Skill
+{% endblock %}
+
+
+{% block content %}
+    <div class="row-fluid">
+        <div class="span3">
+          <div class="well sidebar-nav">
+            <ul class="nav nav-list">
+              <li class="nav-header">Pomodoro</li>
+              <li><a href="{% url pomodoro_new %}">New pomodoro</a></li>
+              <li class="active"><a href="{% url pomodoro_home %}">Home</a></li>
+              <li><a href="{% url pomodoro_history %}">History</a></li>
+            </ul>
+          </div><!--/.well -->
+        </div><!--/span-->
+        <div class="span9">
+          
+          <h1 style="margin-bottom: 20px"><a href="{% url pomodoro_home %}">Pomodoro</a></h1>
+
+          {% if object_list %}
+          <div class="row-fluid">
+            <div class="span3"> 
+              <a class="btn btn-success btn-large start-pomodoro">Start next</a>
+              <a class="btn btn-inverse btn-large start-pomodoro test">Just test</a>
+            </div>
+            <div class="span2">
+              <div id="pomodoro-countdown"></div>
+            </div>
+          </div>
+
+
+          <table class="table table-condensed" style="margin-top: 20px">
+        <thead>
+          <tr>
+            <th>Pomodoro</th>
+            <th style="text-align: right">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for object in object_list %}
+          <tr class="pomodoro-etry" data-id="{{ object.id }}">
+            <td><a href="{% url wiki_view object.id %}">{{ object.text }}</a></td>
+            <td style="text-align: right">
+              <a href="{% url pomodoro_done  object.id %}" class="btn btn-success btn-mini">Done</a>
+              <a href="{% url pomodoro_update object.id %}" class="btn btn-info btn-mini">Edit</a> 
+              <a href="{% url pomodoro_delete object.id %}" class="btn btn-inverse btn-mini">Remove</a>
+            </td>
+            </td>
+          </tr>
+              {% endfor %}
+        </tbody>
+            </table>
+        {% else %}
+          <p><i class="icon-info-sign"></i> You don't have any todos. <a href="{% url pomodoro_new %}">Add one</a>.</p>
+        {% endif %}
+          
+        </div><!--/span-->
+      </div>
+{% endblock %}

@@ -1,0 +1,140 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <title>
+    {% block title %}
+        
+    {% endblock %}
+    </title>
+	<meta name="description" content="A collection of web tools that helps you be a better programmer">
+	<meta name="author" content="Nikolay Stoitsev">
+
+	<meta name="viewport" content="width=device-width">
+
+	<link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap.css">
+	<style>
+	body {
+	  padding-top: 60px;
+	  padding-bottom: 40px;
+	}
+	</style>
+	<link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap-responsive.css">
+  <link rel="stylesheet" href="{{ STATIC_URL }}css/jquery.countdown.css">
+  <link rel="stylesheet" href="{{ STATIC_URL }}css/style.css">
+  <link rel="stylesheet" href="{{ STATIC_URL }}css/prettyprint.css">
+  <link rel="stylesheet" href="{{ STATIC_URL }}js/markitup/skins/markitup/style.css">
+  <link rel="stylesheet" href="{{ STATIC_URL }}js/markitup/sets/html/style.css">
+
+
+  
+
+	<script src="{{ STATIC_URL }}js/libs/modernizr-2.5.3-respond-1.1.0.min.js"></script>
+</head>
+<body>
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="#">CodaSkill</a>
+          {% if user.is_authenticated %}
+          <div class="btn-group pull-right">
+            <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+              <i class="icon-user"></i> {{ user.username }}
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="/accounts/profile">Profile</a></li>
+              <li class="divider"></li>
+              <li><a href="/accounts/logout">Sign Out</a></li>
+            </ul>
+          </div>
+	      {% else %}
+	      <div class="btn-group pull-right">
+            <a class="btn" href="/accounts/login">
+              Login <span class="icon-arrow-right"></span>
+            </a>
+          </div>
+          {% endif %}
+          <div class="nav-collapse">
+            {% include "navigation.html" %}
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      {% block content %}
+        
+      {% endblock %}
+
+      <hr>
+
+      <footer>
+        <p>CodaSkill &copy; 2012</p>
+        <!--<div class="addthis_toolbox addthis_default_style">
+         <a class="addthis_button_facebook"></a>
+         <a class="addthis_button_twitter"></a>
+         <a class="addthis_button_pdfonline"></a>
+         <a class="addthis_button_print"></a>
+         <a class="addthis_button_google_plusone" g:plusone:count="false" g:plusone:annotation="none"></a>
+         <a class="addthis_button_menu"></a>
+       </div>-->
+      </footer>
+
+    </div> <!-- /container -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js"></script>
+<script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.2.js"><\/script>')</script>
+
+<script src="{{ STATIC_URL }}js/libs/bootstrap/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=xa-4e13aac8372bd045"></script>
+<script src="{{ STATIC_URL }}js/plugins.js"></script>
+<script src="{{ STATIC_URL }}js/script.js"></script>
+<script src="{{ STATIC_URL }}js/jquery.countdown.js"></script>
+<script src="{{ STATIC_URL }}js/pomodoro.js"></script>
+<script src="{{ STATIC_URL }}js/prettify.js"></script>
+<script src="{{ STATIC_URL }}js/markitup/jquery.markitup.js"></script>
+<script src="{{ STATIC_URL }}js/settings.js"></script>
+
+<script type="text/javascript">
+	var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+	(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+	g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+	s.parentNode.insertBefore(g,s)}(document,'script'));
+
+  $(document).ready(function() {
+
+    
+    window.prettyPrint && prettyPrint()
+
+    $('.nav').first().children().each(function(element){
+      var href = $(this).children().attr('href');
+      var pathname = window.location.pathname;
+      
+      if(window.location.pathname === '/')
+        $('.nav').first().children().first().addClass('active');
+      else if (href === pathname.substring(0, href.length)) {
+        if (href != '/')
+          $(this).addClass('active');
+      }
+    });
+
+    if($('#wiki-page-content').length != 0) {
+      $('#wiki-page-content').markItUp(mySettings);
+    }
+  });
+</script>
+
+</body>
+</html>

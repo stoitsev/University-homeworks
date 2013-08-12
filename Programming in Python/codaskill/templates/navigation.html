@@ -1,0 +1,8 @@
+<ul class="nav">
+  <li><a href="/">Home</a></li>
+  {% if user.is_authenticated %}
+  <li><a href="{% url wiki_home %}">Wiki</a></li>
+  <li><a href="{% url pomodoro_home %}">Pomodoro</a></li>
+  {% endif %}
+  <li><a href="https://github.com/stoitsev/codaskill" target="_blank">Participate</a></li>
+</ul>
