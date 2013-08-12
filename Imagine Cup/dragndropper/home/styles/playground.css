@@ -1,0 +1,224 @@
+.w {
+	z-index:4;
+	cursor:move;
+}
+
+.ep {
+	float:right;
+	width:1em;
+	height:1em;
+	background-color:#994466;
+	cursor:pointer;
+}
+
+.ex {
+	float:right;
+	width:1em;
+	height:1em;
+	background-color:black;
+	cursor:pointer;
+}
+
+._jsPlumb_endpoint {
+	z-index:3;
+}
+
+.dragHover {
+	border:1px dotted red;
+}
+
+path {
+	cursor:pointer;
+}
+
+.code-box {
+  margin: 5px;
+}
+
+.code-box-style {
+  width: 40px;
+  height: 40px;
+}
+
+.code-box-red {
+  background-color: red;
+}
+
+.code-box-blue {
+  background-color: blue;
+}
+
+.code-box-green {
+  background-color: green;
+}
+
+.code-box-yellow {
+  background-color: yellow;
+}
+
+.world-box {
+  margin: 5px;
+}
+
+.world-box-style {
+  width: 100px;
+  height: 100px;
+}
+
+.world-box-red {
+  background-color: red;
+}
+
+.world-box-blue {
+  background-color: blue;
+}
+
+.world-box-green {
+  background-color: green;
+}
+
+.world-box-yellow {
+  background-color: yellow;
+}
+
+.code-box-palette {
+  width: 10%;
+  height: 100%;
+  float: left;
+}
+
+.world-box-palette {
+  width: 5%;
+  height: 100%;
+  float: left;
+}
+
+.world-box-style {
+  width: 40px;
+  height: 40px;
+}
+
+.pg_wrapper {
+  position: absolute;
+  top:100px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.pg_wrapper > div {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  border-top: 2px solid #dddddd;
+  z-index: 100;
+}
+
+.code_pl {
+  left: 0;
+  width: 95px;
+  border-right: 2px solid #dddddd;
+}
+
+.code {
+  left: 95px;
+  right: 50%;
+  border-right: 1px solid #dddddd;
+}
+
+.world_pl {
+  right: 0;
+  width: 95px;
+  border-left: 2px solid #dddddd;
+}
+
+.world {
+  right: 95px;
+  left: 50%;
+  border-left: 1px solid #dddddd;
+}
+
+.pg_wrapper > h2 {
+  position: absolute;
+  top: 0;
+  z-index: 400;
+}
+
+.world_lbl {
+  right: 100px;
+}
+
+.code_lbl {
+  left: 100px;
+}
+
+#launch_button {
+  position: absolute;
+  bottom:0;
+  right: 0;
+  z-index: 400;
+  width: 95px;
+  height: 65px;
+  border-top: 2px solid #dddddd;
+}
+
+#launch_button button {
+  margin-left: 20px;
+}
+
+body {
+  overflow: hidden;
+}
+
+#cr-stage-container {
+  margin: 0 auto;
+  position: relative;
+  width: 720px;
+  height: 480px;
+}
+
+.back_to_code {
+  display: none;
+  position: absolute;
+  top: 540px;
+  left: 10%;
+}
+
+#hover_zones {
+  position: absolute;
+  z-index: 300;
+  width: 720px;
+  height: 480px;
+}
+
+#up_zone {
+  position: absolute;
+  width: 460px;
+  height: 150px;
+  top: 0;
+  left: 140px;
+}
+
+#down_zone {
+  position: absolute;
+  width: 460px;
+  height: 150px;
+  bottom: 0;
+  left: 140px;
+}
+
+#left_zone {
+  position: absolute;
+  height: 260px;
+  width: 150px;
+  left: 0;
+  top: 100px;
+}
+
+#right_zone {
+  position: absolute;
+  height: 260px;
+  width: 150px;
+  right: 0;
+  top: 100px;
+}
