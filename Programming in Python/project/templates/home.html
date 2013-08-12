@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block preload_js %}
+<script type="text/javascript"
+    src="http://maps.google.com/maps/api/js?sensor=true">
+</script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    initialize();
+  });
+  var map;
+  function initialize() {
+    var latlng = new google.maps.LatLng(42.693577,23.320341);
+    var myOptions = {
+      panControl: false,
+      zoom: 14,
+      center: latlng,
+      zoomControlOptions: {
+         style: google.maps.ZoomControlStyle.SMALL
+      },
+      mapTypeId: google.maps.MapTypeId.HYBRID
+    };
+    map = new google.maps.Map(document.getElementById("map_canvas"),
+        myOptions);
+        
+    var infowindow = new google.maps.InfoWindow(
+      { content: "<form><input type=\"text\" name=\"realname\"><br><input type=\"text\" name=\"realname\"><br><input type=\"text\" name=\"realname\"><br><input type=\"text\" name=\"realname\"><br><input type=\"text\" name=\"realname\"><br><input type=\"text\" name=\"realname\"><br><input type=\"submit\" value=\"Submit\"></form>",
+        size: new google.maps.Size(50,50)
+      });
+        
+    google.maps.event.addListener(map, 'click', function(event) {
+        marker = placeMarker(event.latLng);
+        infowindow.open(map,marker);
+    });
+  }
+  var marker;
+  function placeMarker(location) {
+    if(typeof(marker) == 'object') {
+        marker.setMap(null);
+    }
+    marker = new google.maps.Marker({
+        position: location, 
+        map: map
+    });
+    
+    return marker;
+  }
+  
+  function removeMarker() {
+    marker.setMap(null);
+  }
+  
+  function modalDialog() {
+        $("#dialog").dialog('open');
+  }
+
+</script>
+{% endblock %}
+
+{% block title %}Добре дошли!{% endblock %}
+
+{% block content %}
+<div id="map_canvas" style="width:550px; height:550px"></div>
+
+
+{% endblock %}
+
+{% block sidebar %}
+<p>
+Моля, кликнете на картата за да отбележите място или разгледайте отбелязаните места в близост до вас.
+</p>
+{% endblock %}
+
