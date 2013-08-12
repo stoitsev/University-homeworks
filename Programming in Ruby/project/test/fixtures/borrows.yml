@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  date_taken: 2012-02-17
+  return_date: 2012-02-17
+  returned: false
+  user_id: users(:admin).id
+  book_id: books(:one).id
+
+two:
+  date_taken: 2012-02-17
+  return_date: 2012-02-17
+  returned: false
+  user_id: users(:admin).id
+  book_id: books(:one).id

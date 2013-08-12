@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+<% if current_user.try(:admin?) %>
+  <%= link_to 'Edit', edit_category_path(@category) %>
+<% end %>
+
+<h1><%= @category.name %></h1>
+
+<p>
+  <%= @category.description %>
+</p>
+
+<div class="vertical-section">
+
+</div>
+
+<% if @category.children.size != 0 %>
+  <div class="vertical-section">
+    <h2>Subcategories</h2>
+    <ul id="categories" class="category-tree">
+      <%= render :partial => "li", :collection => @category.children %>
+    </ul>
+  </div>
+<% end %>
+
+

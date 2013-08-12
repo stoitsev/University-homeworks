@@ -1,0 +1,30 @@
+<h1>Borrow #<%= @borrow.id %></h1>
+
+<p>
+  <b>User:</b>
+  <%= @borrow.user.email %>
+</p>
+
+<p>
+  <b>Book:</b>
+  <%= @borrow.book.title %>
+</p>
+
+<p>
+  <b>Date taken:</b>
+  <%= @borrow.date_taken %>
+</p>
+
+<p>
+  <b>Return date:</b>
+  <%= @borrow.return_date %>
+</p>
+
+<p>
+  <b>Returned:</b>
+  <%= @borrow.returned ? "Yes" : "No" %>
+</p>
+
+
+<%= link_to 'Edit', edit_borrow_path(@borrow) %> |
+<%= link_to 'Back', borrows_path %>

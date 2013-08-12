@@ -1,0 +1,8 @@
+<ul>
+  <li><%= link_to "Home", library_path %></li>
+  <li><%= link_to "Books", categories_path %></li>
+  <% if user_signed_in? %>
+    <li><%= link_to "Borrows", borrows_path %></li>
+  <% end %>
+</ul>
+

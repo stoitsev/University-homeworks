@@ -1,0 +1,311 @@
+/* === CSS RESET === */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+
+body {
+	line-height: 1;
+	background: #EFEFEF;
+}
+
+ol, ul {
+	list-style: none;
+}
+
+blockquote, q {
+	quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+a, a:visited {
+  text-decoration: none;
+  color: #009;
+}
+
+/* === LAYOUT === */
+
+body {
+ font-family: Arial, Helvetica, sans-serif;
+ font-size: 13px;
+ color: #555;
+}
+
+#wrapper { 
+ margin: 0 auto;
+ width: 920px;
+ border: 1px solid #C9E0ED;
+ background: #fff;
+}
+
+header {
+ position: relative;
+ width: 820px;
+ padding: 10px 0 10px 100px;
+ height: 60px;
+ margin: 0;
+ border-top: 3px solid #C9E0ED;
+ background: #fff url(<%=asset_path "logo.png"%>) no-repeat 20px center;
+}
+
+header h1 {
+  font-size: 2.6em;
+  font-weight: bold;
+}
+
+header p {
+  margin-top: 5px;
+  color: #838383;
+}
+
+nav {
+ width: 920px;
+ margin: 0;
+ background: #fff url(<%=asset_path "bg.gif"%>) repeat-x left top;
+ color: #fff;
+}
+
+nav ul {
+	padding:6px 20px 5px 20px;
+	margin:0px;
+}
+
+nav ul li
+{
+	display: inline;
+}
+
+nav ul li a, nav ul li a:visited
+{
+	color:#ffffff;
+	background-color:transparent;
+	font-size:12px;
+	font-weight:bold;
+	text-decoration:none;
+	padding:5px 8px;
+}
+
+nav ul li a:hover, nav ul li.active a
+{
+	color: #6399cd;
+	background-color:#EFF4FA;
+	text-decoration:none;
+}
+
+section { 
+ width: 900px;
+ margin: 0;
+ padding: 10px;
+ min-height: 350px;
+ line-height: 1.6em;
+}
+
+footer { 
+ width: 880px;
+ margin: 0 10px;
+ padding: 10px;
+ text-align: right;
+ font-size: 0.8em;
+ border-top: 1px solid #C9E0ED;
+}
+
+section h1 {
+  margin-top: 10px;
+  color: #000;
+  font-size: 1.6em;
+  font-weight: bold;
+  border-bottom: 1px solid #C9E0ED;
+  padding: 5px 0;
+}
+
+section h2 {
+  font-size: 1.4em;
+  margin-bottom: 10px;
+}
+
+section p {
+  margin: 5px 0;
+}
+
+section a, section a:visited {
+  color: #009;
+  text-decoration: none;
+}
+
+section a:hover {
+  text-decoration: underline;
+}
+
+div.field input {
+	border: 1px solid #000;
+	width: 350px;
+}
+
+div.field textarea {
+	border: 1px solid #000;
+	width: 350px;
+}
+
+div.actions {
+  margin: 20px 0;
+}
+
+table {
+  margin-top: 10px;
+  border: 1px solid #000;
+}
+
+table tr th {
+  padding: 7px;
+  background: #ddd;
+  border: 1px solid #000;
+}
+
+table tr td {
+  padding: 7px;
+  border: 1px solid #000;
+}
+
+table tr.late td {
+  background: #eeaaaa;
+}
+
+/* Page elements */
+
+div#error_explanation {
+  border: 1px solid #F00;
+  margin: 10px 2px;
+  padding: 5px;
+}
+
+div#error_explanation h2{
+  font-size: 1.2em;
+}
+
+div#error_explanation ul li {
+  font-weight: bold;
+}
+
+div.field_with_errors label {
+  color: #F00;
+}
+
+div.field_with_errors input {
+  border: 1px solid #F00;
+} 
+
+p.notice {
+  color: #00FF00;
+  margin: 10px 0;
+  font-weight: bold;
+}
+
+p.alert {
+  color: #FF0000;
+  margin: 10px 0;
+  font-weight: bold;
+}
+
+.category-tree {
+  padding-left: 15px;
+}
+
+.vertical-section {
+  width: 400px;
+  margin-right: 30px;
+  float:left;
+  padding-top: 20px;
+}
+
+#categories {
+  font-size: 1.2em;
+  margin-top: 10px;
+} 
+
+#categories li {
+  margin: 3px 0;
+}
+
+#categories li a {
+  color: #298DCD;
+}
+
+#popular-books-title {
+  margin-top: 20px;
+}
+
+.user-menu {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+}
+
+ul.user-menu li {
+  display: inline;
+  margin-left: 5px;
+}
+
+ul.user-menu li a, ul.user-menu li a:visited {
+  color: #838383;
+  font-weight: bold;
+}
+
+ul.user-menu li a:hover {
+  color: #000;
+}
+
+.clear {
+  clear: both;
+}
+
+ul#books li {
+  border-bottom: 1px solid #298DCD;
+  padding: 5px 0;
+  font-size: 14px;
+}
+
+ul#books li a {
+  color: #555;
+  font-weight: bold;
+}
+
+div#show_book b{
+  font-weight: bold;
+}
+
+div#show_book h2 {
+  margin-top: 20px;
+}

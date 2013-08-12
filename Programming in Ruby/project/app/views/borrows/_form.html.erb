@@ -1,0 +1,39 @@
+<%= form_for(@borrow) do |f| %>
+  <% if @borrow.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@borrow.errors.count, "error") %> prohibited this borrow from being saved:</h2>
+
+      <ul>
+      <% @borrow.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="field">
+    <%= f.label :book_id %><br />
+    <%= f.select :book_id, options_from_collection_for_select(Book.where("num_available > 0").order("title"), "id", "title") %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :user_id %><br />
+    <%= f.select :user_id, options_from_collection_for_select(User.where("confirmation_token is NULL").order("email"), "id", "email") %>
+  </div>
+
+  <div class="field">
+    <%= f.label :date_taken %><br />
+    <%= f.date_select :date_taken %>
+  </div>
+  
+  <% if @edit %>  
+  <div class="field">
+    <%= f.label :returned %><br />
+    <%= f.check_box :returned %>
+  </div>
+  <% end %>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

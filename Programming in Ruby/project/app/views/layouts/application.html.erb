@@ -1,0 +1,46 @@
+<!Doctype html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>eLib</title>
+  <%= stylesheet_link_tag    "application" %>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=xa-4e13aac8372bd045"></script>
+  <%= favicon_link_tag asset_path("favicon.ico") %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div id="wrapper">
+     <header>
+		       <h1>eLib</h1>
+		       <p>your place to find a book</p>
+		       <ul class="user-menu">
+		        <% if current_user.try(:admin?) %>
+		          <li><%= link_to 'Admin', :controller => 'library', :action => 'admin'  %></li>
+		        <% end %>
+            <%= render 'shared/registration_items' %>
+            <%= render 'shared/login_items' %>
+          </ul> 
+		 </header>
+     <nav>
+        <%= render "shared/menu" %> 
+		 </nav>
+		 <section>
+		   <p class="notice"><%= notice %></p>
+       <p class="alert"><%= alert %></p>
+       <%= yield %>
+		 </section>
+		 <footer>
+       <div class="addthis_toolbox addthis_default_style">
+         <a class="addthis_button_facebook"></a>
+         <a class="addthis_button_twitter"></a>
+         <a class="addthis_button_pdfonline"></a>
+         <a class="addthis_button_print"></a>
+         <a class="addthis_button_google_plusone" g:plusone:count="false" g:plusone:annotation="none"></a>
+         <a class="addthis_button_menu"></a>
+       </div>
+	   </footer>
+   </div>
+</body>
+</body>
+</html>

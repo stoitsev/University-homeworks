@@ -1,0 +1,8 @@
+<li>
+<%= link_to li.name, :action => 'show', :id => li.id %>
+<% if li.children.size > 0 %>
+<ul class="category-tree">
+<%= render :partial => "li", :collection => li.children %>
+</ul>
+<% end %>
+</li>

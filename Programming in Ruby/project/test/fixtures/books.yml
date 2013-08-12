@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  author: MyString
+  num_available: 3
+  description: MyText
+  language: English
+
+two:
+  title: MyString
+  author: MyString
+  num_available: 3
+  description: MyText
+  language: English

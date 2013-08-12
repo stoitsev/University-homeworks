@@ -1,0 +1,3 @@
+<li>
+<%= link_to book.title, :controller=>'books', :action => 'show', :id => book.id %> - <%= book.author %>, Added on <%= book.created_at.to_date %>
+</li>

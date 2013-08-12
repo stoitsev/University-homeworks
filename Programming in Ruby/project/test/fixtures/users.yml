@@ -1,0 +1,4 @@
+admin:
+  email: test1@elib.com
+  encrypted_password: $2a$10$S6OHNjOxLbMEb/S12w/RWu6tYQlDSI40J1wE8j3y9TcgdEpfFeVPW
+  admin: true

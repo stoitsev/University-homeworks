@@ -1,0 +1,21 @@
+<h1>Our books</h1>
+
+<div class="vertical-section">
+  <h2>Books Categories</h2>
+  <% if current_user.try(:admin?) %>
+    <%= link_to 'New Category', new_category_path %>
+  <% end %>
+
+  <ul id="categories" class="category-tree">
+    <%= render :partial => "li", :collection => @categories %>
+  </ul>
+</div>
+
+<div class="vertical-section">
+  <h2>Latest books</h2>
+  <ul id="books">
+    <%= render :partial => "book", :collection => @books %>
+  </ul>
+</div>
+
+<div class="clear"></div>

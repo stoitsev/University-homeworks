@@ -1,0 +1,35 @@
+<h1>Listing borrows</h1>
+
+<table>
+  <tr>
+    <th>Date taken</th>
+    <th>Return date</th>
+    <th>Returned</th>
+    <th>Book</th>
+    <th>User</th>
+    <th></th>
+    <% if current_user.try(:admin?) %>
+    <th></th>
+    <th></th>
+    <% end %>
+  </tr>
+
+<% @borrows.each do |borrow| %>
+  <tr<%= borrow.return_date < Time.now.to_date ? ' class=late' : '' %>>
+    <td><%= borrow.date_taken %></td>
+    <td><%= borrow.return_date %></td>
+    <td><%= borrow.returned ? "Yes" : "No" %></td>
+    <td><%= borrow.book.title %></td>
+    <td><%= borrow.user.email %></td>
+    <td><%= link_to 'Show', borrow %></td>
+    <% if current_user.try(:admin?) %>
+    <td><%= link_to 'Edit', edit_borrow_path(borrow) %></td>
+    <td><%= link_to 'Destroy', borrow, confirm: 'Are you sure?', method: :delete %></td>
+    <% end %>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Borrow', new_borrow_path %>

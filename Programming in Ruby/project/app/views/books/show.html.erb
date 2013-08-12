@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+<% if current_user.try(:admin?) %>
+  <%= link_to 'Edit', edit_category_path(@category) %>
+<% end %>
+<div id="show_book">
+  <h1><%= @book.title %></h1>
+
+  <p>
+    <b>Author:</b>
+    <%= @book.author %>
+  </p>
+  <p>
+    <b>Copies available:</b>
+    <%= @book.num_available %>
+  </p>
+
+  <p>
+    <b>Categories:</b>
+    <% @book.categories.each{ |category| %>
+      <%= link_to category.name, :controller => 'categories' , :action => 'show', :id => category.id %>,
+    <% } %>
+  </p>
+
+  <p>
+    <b>Language:</b>
+    <%= @book.language %>
+  </p>
+
+  <h2>Description</h2>
+  <p>
+    <%= @book.description %>
+  </p>
+</div>

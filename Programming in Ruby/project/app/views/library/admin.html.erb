@@ -1,0 +1,9 @@
+<h1>Administration</h1>
+<ul id="categories">
+<li><%= link_to 'Categories administration', :controller=>'categories', :action => 'admin' %></li>
+<li><%= link_to 'Add category', :controller=>'categories', :action => 'new' %></li>
+<li><%= link_to 'Books administration', :controller=>'books', :action => 'index' %></li>
+<li><%= link_to 'Add book', :controller=>'books', :action => 'new' %></li>
+<li><%= link_to 'Manage borrows', :controller=>'borrows', :action => 'index' %></li>
+<li><%= link_to 'Add borrow', :controller=>'borrows', :action => 'new' %></li>
+</ul>
