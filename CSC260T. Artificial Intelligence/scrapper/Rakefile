@@ -1,0 +1,5 @@
+task :default => [:analyze]
+
+task :analyze do
+  ruby "lib/recommendbg/image_processing/process_images.rb"
+end

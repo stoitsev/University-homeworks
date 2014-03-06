@@ -1,0 +1,31 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+#page {
+	width: 400px;
+  margin: 0 auto;
+}
+
+#page fieldset {
+  border: 0px;
+  margin: 20px 0;
+  padding: 0;
+}
+
+#page label {
+  font-weight: bold;
+}
+
+#page input, #page select {
+  display: block;
+  margin: 0;
+  padding: 5px;
+  width: 400px;
+  margin-top: 5px;
+}

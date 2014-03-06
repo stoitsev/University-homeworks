@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  div(id='page')
+    h1 Recommendbg
+    p Вашите отговори бяха записани успешно!
+    if recommended.length > 0
+      p Ето ги и нашите предложения:
+      ol
+        for place in recommended
+          li #{place}
+    else
+      p За жалост, не успяхме да намерим заведения, които отговарят на вашите предпочитания. Моля опитайте отново!

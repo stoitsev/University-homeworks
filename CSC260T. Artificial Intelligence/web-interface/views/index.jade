@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  div(id='page')
+    h1 Recommendbg
+    p Моля напишете своето име и гласувайте за заведенията от 0 до 5 във формата отдолу, след което ще получите нашите предложения.
+    form(name="poll", action="/save", method="post")
+      fieldset(data-role='controlgroup')
+        label(for="name") Име
+          input(type="text",name="name",id="name")
+      for place in places
+        fieldset(data-role='controlgroup')
+          label(for='#{place}') #{place}
+            select(id='#{place}','name'='#{place}')
+              option(value='null') Нямам мнение
+              option 0
+              option 1
+              option 2
+              option 3
+              option 4
+              option 5
+      input('type'='submit', value='Гласувай')

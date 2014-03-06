@@ -1,0 +1,51 @@
+extends layout
+
+block content
+  h1 Резултати
+  table
+    tr
+      th Име
+      for place in all_places
+        th #{place}
+    for vote in votes
+      tr
+        if vote.name
+          td #{vote.name}
+        else
+          td --
+        for place in all_places
+          if vote[place]
+            td #{vote[place]}
+          else
+            td ?
+  
+  h2 Гласували потребители
+  p
+    for vote in votes
+      if vote.name
+        = vote.name
+      else
+        = "-"
+      = ','
+      for place in all_places
+        if vote[place] > 0
+          = "1,"
+        else
+          = "0,"
+      <br/>
+  
+  h2 Оценки
+  p
+    for vote in votes
+      if vote.name
+        = vote.name
+      else
+        = "-"
+      = ','
+      for place in all_places
+        if vote[place] > 0
+          = vote[place]
+        else
+          = "0"
+        = ","
+      <br/>

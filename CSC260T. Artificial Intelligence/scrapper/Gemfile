@@ -1,0 +1,5 @@
+source :rubygems
+
+#gem "opencv"
+gem "pmap"
+gem "rake"
