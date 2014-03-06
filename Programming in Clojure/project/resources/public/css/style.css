@@ -1,0 +1,23 @@
+.result_container {
+	border: 1px solid #ccc;
+	padding: 10px;
+	border-radius: 6px;
+}
+
+#loading {
+	display: none;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: #000;
+	opacity: 0.8;
+}
+
+#loading p {
+	color: #FFF;
+	font: 42px strong;
+	text-align: center;
+	margin-top: 200px;
+}

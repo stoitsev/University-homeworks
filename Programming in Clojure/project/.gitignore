@@ -1,0 +1,10 @@
+pom.xml
+*jar
+/classes/
+/.lein-deps-sum
+/.lein-failures
+/.lein-env
+/.lein-repl-history
+/checkouts
+/.env
+/target

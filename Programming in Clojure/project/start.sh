@@ -1,0 +1,1 @@
+lein run -m vscan.web 5000
