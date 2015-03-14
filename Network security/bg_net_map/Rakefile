@@ -1,0 +1,9 @@
+task :default => [:scrap]
+
+task :scrap do
+  ruby "lib/scraper.rb"
+end
+
+task :server do
+  ruby "visualization/server.rb"
+end

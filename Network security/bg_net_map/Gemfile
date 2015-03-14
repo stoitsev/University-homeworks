@@ -1,0 +1,4 @@
+source :rubygems
+
+gem "pmap"
+gem "rake"
